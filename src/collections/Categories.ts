@@ -20,5 +20,12 @@ export const Categories: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    {
+      name: 'icon',
+      type: 'text',
+      required: false,
+      defaultValue: "",
+      label: "Icon (paste the font awesome icon label. e.g: 'fa-solid fa-droplet')"
+    },
   ],
 }

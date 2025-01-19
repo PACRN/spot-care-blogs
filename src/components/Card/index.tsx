@@ -32,37 +32,25 @@ export const Card: React.FC<{
   return (
     <article
       className={cn(
-        'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
+        'border border-border rounded-xl overflow-hidden hover:cursor-pointer',
         className,
       )}
       ref={card.ref}
     >
       <div className="relative w-full ">
         {!metaImage && <div className="">No image</div>}
-        {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
+        {metaImage && typeof metaImage !== 'string' && <div className='p-2 rounded-xl overflow-hidden'><Media imgClassName='rounded-xl' resource={metaImage} size="40vw" /></div>}
       </div>
       <div className="p-4">
         {showCategories && hasCategories && (
           <div className="uppercase text-sm mb-4">
             {showCategories && hasCategories && (
-              <div>
+              <div className='flex'>
                 {categories?.map((category, index) => {
                   if (typeof category === 'object') {
-                    const { title: titleFromCategory } = category
+                    return <span key={index} className="text-muted-foreground uppercase text-[0.55rem] line-clamp-1 bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-auto rounded-xl">{category.title}</span>
 
-                    const categoryTitle = titleFromCategory || 'Untitled category'
-
-                    const isLast = index === categories.length - 1
-
-                    return (
-                      <Fragment key={index}>
-                        {categoryTitle}
-                        {!isLast && <Fragment>, &nbsp;</Fragment>}
-                      </Fragment>
-                    )
                   }
-
-                  return null
                 })}
               </div>
             )}

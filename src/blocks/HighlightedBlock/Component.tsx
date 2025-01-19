@@ -50,7 +50,6 @@ export const HighlightedBlock: React.FC<
     }
   }
 
-  console.log(id)
 
   return (
     <div className="my-16" id={`block-${id}`}>

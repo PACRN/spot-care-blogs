@@ -6,15 +6,17 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Media } from '../Media'
 import { Category } from '@/payload-types'
+import { CollectionArchive } from '../CollectionArchive'
 
 export type Props = {
     posts: CardPostData[]
 }
 
-export const Highlightedtemplate1: React.FC<Props> = (props) => {
+export const CategoryResult: React.FC<Props> = (props) => {
     const { posts } = props
     const [firstPost, setFirstPost] = useState<CardPostData>()
     const [firstFourPost, setFirstFourPost] = useState<CardPostData[]>()
+    const [restOfPost, setRestOfPost] = useState<CardPostData[]>()
 
 
 
@@ -22,13 +24,14 @@ export const Highlightedtemplate1: React.FC<Props> = (props) => {
         if (posts.length > 0) setFirstPost(posts[0])
         setFirstPost(posts[0])
         setFirstFourPost(posts.slice(1, 5))
+        setRestOfPost(posts.slice(5, -1))
     }, [posts])
 
     return (
         <div className="container mx-auto rounded-3x">
-            <div className="grid lg:grid-cols-12 gap-10">
+            <div className="grid lg:grid-cols-5 gap-6">
                 {/* Featured Article */}
-                <div className="lg:col-span-6">
+                <div className="lg:col-span-3">
                     {
                         firstPost?.meta?.image &&
                         <Link href={`/posts/${firstPost?.slug}`} className="group">
@@ -40,7 +43,7 @@ export const Highlightedtemplate1: React.FC<Props> = (props) => {
                                     <div className='flex'>
                                         {
                                             firstPost?.categories?.map((category: Category, index) => {
-                                                return <span key={index} className="text-muted-foreground uppercase text-[0.60rem] bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-auto py-1 rounded-xl">{category.title}</span>
+                                                return <span key={index} className="text-muted-foreground uppercase bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-auto py-1 rounded-xl">{category.title}</span>
                                             })
                                         }
                                     </div>
@@ -54,32 +57,34 @@ export const Highlightedtemplate1: React.FC<Props> = (props) => {
                 </div>
 
                 {/* Article List */}
-                <div className="lg:col-span-6 flex flex-col gap-6 lg:px-8 lg:py-4" key={"right"}>
+                <div className="lg:col-span-2 flex flex-col gap-6 lg:px-8 lg:py-4" key={"right"}>
                     {firstFourPost?.map((article, index) => (
                         <>
+                            <hr />
                             <Link key={index} href={`/posts/${article.slug}`} className="group">
-                                <div className="grid lg:grid-cols-12 gap-10">
-                                    <div className="col-span-7">
-                                        <div className='flex pb-2'>
+                                <div className="flex gap-8">
+                                    <div className="space-y-2">
+                                        <div className='flex'>
                                             {
                                                 firstPost?.categories?.map((category: Category, index) => {
-                                                    return <span key={index} className="text-muted-foreground uppercase text-[0.50rem] line-clamp-1 bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-auto py-1 rounded-xl">{category.title}</span>
+                                                    return <span key={index} className="text-muted-foreground uppercase text-sm bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-auto py-1 rounded-xl">{category.title}</span>
                                                 })
                                             }
                                         </div>
-                                        <h3 className="font-semibold line-clamp-1">{article.title}</h3>
-                                        <p className="text-sm text-muted-foreground line-clamp-3">{article.meta?.description}</p>
+                                        <h3 className="font-semibold line-clamp-2">{article.title}</h3>
+                                        <p className="text-sm text-muted-foreground line-clamp-4">{article.meta?.description}</p>
                                     </div>
-                                    <div className="relative h-28 w-44 flex-shrink-0 rounded-3xl overflow-hidden col-span-5">
+                                    <div className="relative h-28 w-40 flex-shrink-0 rounded-3xl overflow-hidden">
                                         <Media resource={article.meta?.image ?? '/images/placeholder.jpg'} imgClassName='h-[20vh] object-cover' />
                                     </div>
                                 </div>
                             </Link>
-                            <hr className={`w-full ${index === firstFourPost.length - 1 && 'hidden'}`} />
+
                         </>
                     ))}
                 </div>
             </div>
+            <CollectionArchive posts={restOfPost ?? []} />
         </div>
     )
 }

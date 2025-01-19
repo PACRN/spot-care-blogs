@@ -17,10 +17,12 @@ export interface Config {
     categories: Category;
     users: User;
     ads: Ad;
+    home_ads: HomeAd;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
+    pagesearch: Pagesearch;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -33,10 +35,12 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     ads: AdsSelect<false> | AdsSelect<true>;
+    home_ads: HomeAdsSelect<false> | HomeAdsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
+    pagesearch: PagesearchSelect<false> | PagesearchSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -300,6 +304,7 @@ export interface Media {
 export interface Category {
   id: number;
   title: string;
+  icon?: string | null;
   parent?: (number | null) | Category;
   breadcrumbs?:
     | {
@@ -740,6 +745,21 @@ export interface HighlightedBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home_ads".
+ */
+export interface HomeAd {
+  id: number;
+  title: string;
+  adImage: number | Media;
+  adUrl: string;
+  isActive: boolean;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -812,6 +832,20 @@ export interface Search {
   createdAt: string;
 }
 /**
+ * This is a collection of automatically created search results. These results are used by the global site search and will be updated automatically as documents in the CMS are created or updated.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pagesearch".
+ */
+export interface Pagesearch {
+  id: number;
+  title?: string | null;
+  priority?: number | null;
+  doc: number | Post;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -843,6 +877,10 @@ export interface PayloadLockedDocument {
         value: number | Ad;
       } | null)
     | ({
+        relationTo: 'home_ads';
+        value: number | HomeAd;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -857,6 +895,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'search';
         value: number | Search;
+      } | null)
+    | ({
+        relationTo: 'pagesearch';
+        value: number | Pagesearch;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1195,6 +1237,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   title?: T;
+  icon?: T;
   parent?: T;
   breadcrumbs?:
     | T
@@ -1231,6 +1274,20 @@ export interface AdsSelect<T extends boolean = true> {
   title?: T;
   adImage?: T;
   adUrl?: T;
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home_ads_select".
+ */
+export interface HomeAdsSelect<T extends boolean = true> {
+  title?: T;
+  adImage?: T;
+  adUrl?: T;
+  isActive?: T;
   slug?: T;
   slugLock?: T;
   updatedAt?: T;
@@ -1423,6 +1480,17 @@ export interface SearchSelect<T extends boolean = true> {
         id?: T;
         title?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pagesearch_select".
+ */
+export interface PagesearchSelect<T extends boolean = true> {
+  title?: T;
+  priority?: T;
+  doc?: T;
   updatedAt?: T;
   createdAt?: T;
 }
