@@ -16,6 +16,8 @@ export const Sidebar: React.FC<SidebarListProps> = ({ categoryDetails, classname
         <div className="space-y-4 py-4">
             <div className="px-3 py-2">
                 <div className="space-y-1">
+                    <span className="group flex items-center rounded-xl px-3 py-2 text-md font-bold text-purple-700">Your topics to read</span>
+                    <hr className="pb-4 text-purple-700" />
                     <Link
                         key={"home"}
                         href={`/articles--guides`}
