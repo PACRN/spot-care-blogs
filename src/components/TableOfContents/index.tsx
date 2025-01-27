@@ -31,6 +31,8 @@ const extractHeadings = (node: any, level: number = 0): Heading[] => {
 
 export const TableOfContents: React.FC<{ post: Post, classname?: string }> = ({ post, classname }) => {
 
+
+
     if (!post.content) {
         return null;
     }
@@ -44,7 +46,7 @@ export const TableOfContents: React.FC<{ post: Post, classname?: string }> = ({ 
                 {headings.map((heading, index) => (
                     <li
                         key={index}
-                        className={`pl-${heading.level} cursor-pointer text-xs py-2`}
+                        className={`pl-1 cursor-pointer text-xs py-2`}
                     >
                         {heading.text}
                     </li>

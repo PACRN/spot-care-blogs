@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-
+import rightImg from "../../../images/about-hero-right.png"
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -14,10 +14,11 @@ import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { SidebarProps } from '@/components/SideBar/SidebarProps'
-import { Sidebar } from '@/components/SideBar'
+import { SidebarProps } from '@/components/NavBar/SidebarProps'
+import { TopNavbar } from '@/components/NavBar'
 import Link from 'next/link'
 import { Media as CompMedia } from '@/components/Media'
+import SectionHero from '@/components/PageHero'
 
 type adsHolder = {
   adImage: Media | number;
@@ -145,37 +146,37 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <RenderHero {...hero} />
-      {/* Blog Content */}
-      <div className="flex h-screen">
+      <div className='nc-page-article'>
+        {/* <RenderHero {...hero} /> */}
+        <div className="container py-16 lg:py-16 space-y-16 lg:space-y-16">
+          <SectionHero
+            rightImg={rightImg.src}
+            heading="Spot Care Blogs 👋"
+            btnText=""
+            subHeading="We’re impartial and independent, and every day we create distinctive, world-class programmes and content which inform, educate and entertain millions of people in the around the world."
+          />
+        </div>
 
-        {/* Left Content */}
-        <div className="hidden lg:block h-full w-52 bg-background sticky top-0  overflow-hidden">
-          <div className="h-full py-6">
-            <Sidebar categoryDetails={categories} classname='' />
+        {/* Blog Content */}
+        <div className="flex h-screen">
+
+          {/* Left Content */}
+
+          {/* Main Content */}
+          <div className="flex-1 flex flex-col w-full">
+            <div className="sticky top-0 z-10">
+              <TopNavbar categoryDetails={categories} classname='' />
+            </div>
+            <div className="w-full">
+              <RenderBlocks blocks={layout} />
+            </div>
           </div>
-        </div>
-        {/* Main Content */}
-        <div className="flex-1 flex flex-col w-full">
-          <div className="w-full">
-            <RenderBlocks blocks={layout} />
-          </div>
-        </div>
-        {/* Right Content */}
-        <div className="hidden lg:block w-64 bg-background">
-          <div className="h-full py-6">
-            {
-              ads.map((ad: adsHolder, index) => {
-                return <div className='lg:h[10rem] lg:w-[14rem]  rounded-2xl overflow-hidden my-10 cursor-pointer'>
-                  <Link href={ad.adUrl}>
-                    <CompMedia imgClassName="object-contain" resource={ad.adImage} />
-                  </Link>
-                </div>
-              })
-            }
-          </div>
+          {/* Right Content */}
+
         </div>
       </div>
+
+
     </article>
   )
 }

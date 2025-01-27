@@ -1,22 +1,25 @@
-import { formatDateTime } from 'src/utilities/formatDateTime'
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 
 import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { formatAuthors } from '@/utilities/formatAuthors'
+import { ParentTheme } from '@/components/ParentTheme'
 
 export const PostHero: React.FC<{
   post: Post
 }> = ({ post }) => {
+
   const { categories, heroImage, populatedAuthors, publishedAt, title } = post
 
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
 
   return (
-    <div className="relative h-1/6 flex items-end rounded-xl overflow-hidden w-full">
-      <div className="z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
+    <div className="relative rounded-xl overflow-hidden w-full mb-4 ">
+      <ParentTheme pageType='post' />
+      {/* <div className="z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
         <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-2 mx-20">
 
 
@@ -39,8 +42,8 @@ export const PostHero: React.FC<{
             )}
           </div>
         </div>
-      </div>
-      <div className="h-[50vh] select-none w-full">
+      </div> */}
+      <div className="aspect-video overflow-hidden select-none w-full">
         {heroImage && typeof heroImage !== 'string' && (
           <Media fill priority imgClassName="-z-10 object-cover " resource={heroImage} />
         )}

@@ -14,7 +14,7 @@ import { beforeSyncWithSearch } from '@/search/beforeSync'
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 import PageSearch from './PageSearch'
-import { pageSearchFields } from './PageSearch/fieldOverrides'
+import { azureStorage } from '@payloadcms/storage-azure'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Spot Care` : 'Spot Care'
@@ -28,7 +28,7 @@ const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
 
 export const plugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['pages', 'posts'],
+    collections: ['pages', 'posts', 'ads'],
     overrides: {
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
@@ -101,4 +101,13 @@ export const plugins: Plugin[] = [
     },
   }),
   payloadCloudPlugin(),
+  azureStorage({
+    collections: {
+      media: true,
+    },
+    allowContainerCreate: process.env.AZURE_STORAGE_ALLOW_CONTAINER_CREATE === 'true',
+    baseURL: process.env.AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
+    connectionString: `BlobEndpoint=https://pacrndev.blob.core.windows.net/;QueueEndpoint=https://pacrndev.queue.core.windows.net/;FileEndpoint=https://pacrndev.file.core.windows.net/;TableEndpoint=https://pacrndev.table.core.windows.net/;SharedAccessSignature=sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacuptf&se=2030-01-22T23:45:22Z&st=2025-01-22T15:45:22Z&spr=https&sig=4j9girSkLKwgKpp6E0Hdf2CfdM7CxDYgiRY1El12oBM%3D`,
+    containerName: process.env.AZURE_STORAGE_CONTAINER_NAME ?? "",
+  }),
 ]

@@ -30,8 +30,8 @@ export const CustomImpactHero: React.FC<Page['hero']> = ({ links, media, richTex
   }
 
   return (
-    <div className="bg-[#FDF8FF] px-4 py-8 md:py-16">
-      <div className="container mx-auto max-w-7xl">
+    <div className="bg-[#FDF8FF] px-4 py-8 md:py-8">
+      <div className="mx-auto max-w-7xl lg:px-20">
         <div className="grid gap-8 md:gap-16 lg:grid-cols-2">
           <div className="space-y-6">
             <div className="flex items-center gap-3">

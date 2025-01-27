@@ -14,69 +14,83 @@ export type Props = {
 export const Highlightedtemplate1: React.FC<Props> = (props) => {
     const { posts } = props
     const [firstPost, setFirstPost] = useState<CardPostData>()
-    const [firstFourPost, setFirstFourPost] = useState<CardPostData[]>()
+    const [firstFourPosts, setFirstFourPosts] = useState<CardPostData[]>([])
 
 
 
     useEffect(() => {
         if (posts.length > 0) setFirstPost(posts[0])
         setFirstPost(posts[0])
-        setFirstFourPost(posts.slice(1, 5))
+        setFirstFourPosts(posts.slice(1, 4))
     }, [posts])
 
     return (
-        <div className="container mx-auto rounded-3x">
-            <div className="grid lg:grid-cols-12 gap-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="grid lg:grid-cols-12 gap-8">
                 {/* Featured Article */}
-                <div className="lg:col-span-6">
-                    {
-                        firstPost?.meta?.image &&
-                        <Link href={`/posts/${firstPost?.slug}`} className="group">
+                <div className="lg:col-span-6 space-y-6">
+                    {firstPost?.meta?.image && (
+                        <Link href={`/posts/${firstPost?.slug}`} className="group block">
                             <div className="rounded-lg overflow-hidden">
-                                <div className="relative h-[80%] w-full rounded-3xl overflow-hidden">
-                                    <Media resource={firstPost?.meta?.image ?? '/images/placeholder.jpg'} imgClassName='h-full object-cover' />
+                                <div className="relative aspect-video w-full rounded-lg overflow-hidden">
+                                    <Media
+                                        resource={firstPost?.meta?.image ?? "/images/placeholder.jpg"}
+                                        imgClassName="object-cover"
+                                        fill
+                                    />
                                 </div>
-                                <div className="mt-8 space-y-2">
-                                    <div className='flex'>
-                                        {
-                                            firstPost?.categories?.map((category: Category, index) => {
-                                                return <span key={index} className="text-muted-foreground uppercase text-[0.60rem] bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-auto py-1 rounded-xl">{category.title}</span>
-                                            })
-                                        }
+                                <div className="mt-4 space-y-2">
+                                    <div className="flex flex-wrap gap-2">
+                                        {firstPost?.categories?.map((category: Category) => (
+                                            <span
+                                                key={category.id}
+                                                className="text-xs uppercase bg-purple-300 text-purple-700 font-semibold px-2 py-1 rounded-full"
+                                            >
+                                                {category.title}
+                                            </span>
+                                        ))}
                                     </div>
-                                    <p className="text-muted-foreground"></p>
-                                    <h2 className="text-2xl font-bold tracking-tight">{firstPost?.title}</h2>
-                                    <p className="text-muted-foreground">{firstPost?.meta?.description}</p>
+                                    <h2 className="text-xl sm:text-2xl font-bold tracking-tight line-clamp-2">{firstPost?.title}</h2>
+                                    <p className="text-muted-foreground line-clamp-3">{firstPost?.meta?.description}</p>
                                 </div>
                             </div>
                         </Link>
-                    }
+                    )}
                 </div>
 
                 {/* Article List */}
-                <div className="lg:col-span-6 flex flex-col gap-6 lg:px-8 lg:py-4" key={"right"}>
-                    {firstFourPost?.map((article, index) => (
-                        <>
-                            <Link key={index} href={`/posts/${article.slug}`} className="group">
-                                <div className="grid lg:grid-cols-12 gap-10">
-                                    <div className="col-span-7">
-                                        <div className='flex pb-2'>
-                                            {
-                                                firstPost?.categories?.map((category: Category, index) => {
-                                                    return <span key={index} className="text-muted-foreground uppercase text-[0.50rem] line-clamp-1 bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-auto py-1 rounded-xl">{category.title}</span>
-                                                })
-                                            }
+                <div className="lg:col-span-6 space-y-6">
+                    {firstFourPosts.map((article, index) => (
+                        <div key={article.title}>
+                            <Link href={`/posts/${article.slug}`} className="group block">
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                    <div className="sm:flex-1 space-y-2">
+                                        <div className="flex flex-wrap gap-2">
+                                            {article.categories?.map((category: Category) => (
+                                                <span
+                                                    key={category.id}
+                                                    className="text-xs uppercase bg-purple-300 text-purple-700 font-semibold px-2 py-1 rounded-full"
+                                                >
+                                                    {category.title}
+                                                </span>
+                                            ))}
                                         </div>
-                                        <h3 className="font-semibold line-clamp-1">{article.title}</h3>
-                                        <p className="text-sm text-muted-foreground line-clamp-3">{article.meta?.description}</p>
+                                        <h3 className="font-semibold line-clamp-2">{article.title}</h3>
+                                        <p className="text-sm text-muted-foreground line-clamp-2 sm:line-clamp-3">
+                                            {article.meta?.description}
+                                        </p>
                                     </div>
-                                    <div className="relative h-28 w-44 flex-shrink-0 rounded-3xl overflow-hidden col-span-5">
-                                        <Media resource={article.meta?.image ?? '/images/placeholder.jpg'} imgClassName='h-[20vh] object-cover' />
+                                    <div className="relative aspect-video sm:aspect-video w-full sm:w-1/3 rounded-lg overflow-hidden">
+                                        <Media
+                                            resource={article.meta?.image ?? "/images/placeholder.jpg"}
+                                            imgClassName="object-cover"
+                                            fill
+                                        />
                                     </div>
                                 </div>
                             </Link>
-                            <hr className={`w-full ${index === firstFourPost.length - 1 && 'hidden'}`} />
-                        </>
+                            {index < firstFourPosts.length - 1 && <hr className="my-6" />}
+                        </div>
                     ))}
                 </div>
             </div>

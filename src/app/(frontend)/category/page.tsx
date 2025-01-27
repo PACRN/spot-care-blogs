@@ -10,8 +10,8 @@ import PageClient from './page.client'
 import { CardPostData } from '@/components/Card'
 import { Highlightedtemplate1 } from '@/components/Highlghted/HighlightedTemplate1'
 import { CategoryResult } from '@/components/CategoryResult'
-import { Sidebar } from '@/components/SideBar'
-import { SidebarProps } from '@/components/SideBar/SidebarProps'
+import { TopNavbar } from '@/components/NavBar'
+import { SidebarProps } from '@/components/NavBar/SidebarProps'
 
 type Args = {
   searchParams: Promise<{
@@ -67,7 +67,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       {/* Sidebar */}
       <div className="hidden lg:block w-64 border-r bg-background">
         <div className="h-full py-6">
-          <Sidebar categoryDetails={categoryDetails} classname='' selected={query} />
+          <TopNavbar categoryDetails={categoryDetails} classname='' selected={query} />
         </div>
       </div>
       {/* Main Content */}

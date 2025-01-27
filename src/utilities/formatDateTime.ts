@@ -16,5 +16,11 @@ export const formatDateTime = (timestamp: string): string => {
   // const MinMin = (minutes < 10) ? `0${minutes}` : minutes;
   // const SS = (seconds < 10) ? `0${seconds}` : seconds;
 
-  return `${MM}/${DD}/${YYYY}`
+  const formattedDate = date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+
+  return formattedDate
 }

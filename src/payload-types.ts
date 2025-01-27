@@ -778,6 +778,10 @@ export interface Redirect {
       | ({
           relationTo: 'posts';
           value: number | Post;
+        } | null)
+      | ({
+          relationTo: 'ads';
+          value: number | Ad;
         } | null);
     url?: string | null;
   };
