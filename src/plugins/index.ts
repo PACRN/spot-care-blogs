@@ -17,7 +17,7 @@ import PageSearch from './PageSearch'
 import { azureStorage } from '@payloadcms/storage-azure'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Spot Care` : 'Spot Care'
+  return doc?.title ? `${doc.title}` : 'Spot Care'
 }
 
 const generateURL: GenerateURL<Post | Page> = ({ doc }) => {

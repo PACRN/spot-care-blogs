@@ -7,6 +7,7 @@ import React, { Fragment } from 'react'
 import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import Badge from '@/components/ui/badge'
 
 export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
 
@@ -48,8 +49,7 @@ export const Card: React.FC<{
               <div className='flex'>
                 {categories?.map((category, index) => {
                   if (typeof category === 'object') {
-                    return <span key={index} className="text-muted-foreground uppercase text-[0.55rem] line-clamp-1 bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-auto rounded-xl">{category.title}</span>
-
+                    return <Badge key={category.id} name={category.title} color="green" />;
                   }
                 })}
               </div>

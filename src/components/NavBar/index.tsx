@@ -71,11 +71,14 @@ export const TopNavbar: React.FC<SidebarListProps> = ({ categoryDetails, classna
 
 
 
-    return (<nav className="bg-background border-b">
+    return (<nav className="bg-background border-b xs:p-2">
         <div className="mx-auto container">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                <h2 className="text-2xl font-bold mb-4 md:mb-0">Recent Articles</h2>
-                <div className="relative w-full md:w-auto">
+
+                <div className="relative w-full md:w-auto md:flex gap-x-6 mt-4 md:mt-0">
+                    <h2 className="text-2xl font-bold mb-4 md:mb-0 ">Recent Articles</h2>
+                    <div className="h-[34px] w-[1px] bg-gray-300 hidden md:block"></div>
+
                     {showLeftArrow && (
                         <Button
                             variant="ghost"
@@ -88,14 +91,14 @@ export const TopNavbar: React.FC<SidebarListProps> = ({ categoryDetails, classna
                     )}
                     <div
                         ref={navRef}
-                        className="flex space-x-2 md:space-x-4 overflow-x-auto scrollbar-hide py-2"
+                        className="flex space-x-4 overflow-x-auto scrollbar-hide"
                         onScroll={handleScroll}
                     >
                         {categoryDetails.map((item) => (
                             <Link
                                 key={item.title}
                                 href={`/category?q=${item.title}`}
-                                className={`group flex items-center rounded-xl px-3 py-2 text-sm font-medium hover:bg-purple-300 hover:text-purple-700 whitespace-nowrap ${item.title === selected ? "bg-purple-300 text-purple-700" : ""
+                                className={`group flex items-center rounded-xl px-1 py-2 text-sm font-medium  hover:text-purple-700 whitespace-nowrap ${item.title === selected ? "bg-purple-300 text-purple-700" : ""
                                     }`}
                             >
                                 <span className="">{item.title}</span>
@@ -113,17 +116,17 @@ export const TopNavbar: React.FC<SidebarListProps> = ({ categoryDetails, classna
                         </Button>
                     )}
                 </div>
-                <div className="flex items-center justify-end outline-0">
-                    <form onSubmit={handleSearch} className="relative w-full max-w-md outline-none">
+                <div className="flex xs:w-full md:w-1/3 items-center justify-end outline-0">
+                    <form onSubmit={handleSearch} className="relative w-full max-w-md outline-none outline-0">
                         <Input
-                            className="h-12 pr-12 border-0 outline-0"
-                            placeholder="Enter keyword to search"
+                            className="h-12 pr-12 border-0 outline-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:ring-transparent focus:ring-opacity-0"
+                            placeholder="Search topics"
                             type="search"
                             value={searchValue}
                             onChange={handleSearchChange}
                         />
                         <Button
-                            className="absolute right-0 top-0 h-12 w-12 rounded-l-none bg-transparent hover:bg-transparent border-l"
+                            className="absolute right-0 top-0 h-12 w-12 bg-transparent hover:bg-purple-300 hover:rounded-full"
                             size="icon"
                             type="submit"
                         >

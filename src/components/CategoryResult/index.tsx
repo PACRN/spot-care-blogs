@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { Media } from '../Media'
 import { Category } from '@/payload-types'
 import { CollectionArchive } from '../CollectionArchive'
+import Badge from '@/components/ui/badge'
 
 export type Props = {
     posts: CardPostData[]
@@ -43,7 +44,7 @@ export const CategoryResult: React.FC<Props> = (props) => {
                                     <div className='flex'>
                                         {
                                             firstPost?.categories?.map((category: Category, index) => {
-                                                return <span key={index} className="text-muted-foreground uppercase bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-auto py-1 rounded-xl">{category.title}</span>
+                                                return <Badge key={category.id} name={category.title} color="green" />;
                                             })
                                         }
                                     </div>
@@ -67,7 +68,7 @@ export const CategoryResult: React.FC<Props> = (props) => {
                                         <div className='flex'>
                                             {
                                                 firstPost?.categories?.map((category: Category, index) => {
-                                                    return <span key={index} className="text-muted-foreground uppercase text-sm bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-auto py-1 rounded-xl">{category.title}</span>
+                                                    return <Badge key={category.id} name={category.title} color="green" />;
                                                 })
                                             }
                                         </div>

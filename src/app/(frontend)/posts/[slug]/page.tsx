@@ -21,6 +21,7 @@ import Link from 'next/link'
 import { formatAuthors } from '@/utilities/formatAuthors'
 import { formatDateTime } from '@/utilities/formatDateTime'
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Badge from '@/components/ui/badge'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -97,12 +98,7 @@ export default async function Post({ params: paramsPromise }: Args) {
                         const titleToUse = categoryTitle || 'Untitled category';
 
                         return (
-                          <span
-                            key={index}
-                            className="text-muted-foreground uppercase text-sm bg-purple-300 text-purple-700 font-semibold px-2 mr-2 my-1 py-1 rounded-xl inline-block"
-                          >
-                            {titleToUse}
-                          </span>
+                          <Badge key={titleToUse} name={titleToUse} color="green" />
                         );
                       }
                       return null;
@@ -132,16 +128,7 @@ export default async function Post({ params: paramsPromise }: Args) {
                   enableGutter={false}
                 />
                 <hr className='mt-8 font-bold' />
-                {post.relatedPosts && post.relatedPosts?.length > 0 && (
-                  <div className='mb-4'>
 
-                    <RelatedPosts
-                      className="mt-8 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-                      docs={post.relatedPosts.filter((post) => typeof post === 'object')}
-                    />
-                  </div>
-
-                )}
               </div>
 
               <div className="hidden lg:block w-1/4 overflow-hidden">
@@ -158,8 +145,19 @@ export default async function Post({ params: paramsPromise }: Args) {
             </div>
           </div>
         </div>
-      </div>
 
+      </div>
+      {post.relatedPosts && post.relatedPosts?.length > 0 && (
+        <div className='my-8'>
+          <h1 className="container w-full mx-auto text-3xl font-bold">Related Articles</h1>
+
+          <RelatedPosts
+            className="container mx-auto lg:px-32 mb-8 mt-8 max-w-full "
+            docs={post.relatedPosts.filter((post) => typeof post === 'object')}
+          />
+        </div>
+
+      )}
     </article >
   )
 }

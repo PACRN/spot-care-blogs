@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Media } from '../Media'
 import { Category } from '@/payload-types'
+import Badge from '@/components/ui/badge'
 
 export type Props = {
     posts: CardPostData[]
@@ -42,12 +43,7 @@ export const Highlightedtemplate1: React.FC<Props> = (props) => {
                                 <div className="mt-4 space-y-2">
                                     <div className="flex flex-wrap gap-2">
                                         {firstPost?.categories?.map((category: Category) => (
-                                            <span
-                                                key={category.id}
-                                                className="text-xs uppercase bg-purple-300 text-purple-700 font-semibold px-2 py-1 rounded-full"
-                                            >
-                                                {category.title}
-                                            </span>
+                                            <Badge key={category.id} name={category.title} color="green" />
                                         ))}
                                     </div>
                                     <h2 className="text-xl sm:text-2xl font-bold tracking-tight line-clamp-2">{firstPost?.title}</h2>
@@ -67,12 +63,9 @@ export const Highlightedtemplate1: React.FC<Props> = (props) => {
                                     <div className="sm:flex-1 space-y-2">
                                         <div className="flex flex-wrap gap-2">
                                             {article.categories?.map((category: Category) => (
-                                                <span
-                                                    key={category.id}
-                                                    className="text-xs uppercase bg-purple-300 text-purple-700 font-semibold px-2 py-1 rounded-full"
-                                                >
-                                                    {category.title}
-                                                </span>
+
+                                                <Badge key={category.id} name={category.title} color="green" />
+
                                             ))}
                                         </div>
                                         <h3 className="font-semibold line-clamp-2">{article.title}</h3>

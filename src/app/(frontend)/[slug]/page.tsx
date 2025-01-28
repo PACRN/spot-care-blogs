@@ -146,7 +146,12 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
+      <div className="sticky top-0 z-10">
+        <TopNavbar categoryDetails={categories} classname='' />
+      </div>
+
       <div className='nc-page-article'>
+
         {/* <RenderHero {...hero} /> */}
         <div className="container py-16 lg:py-16 space-y-16 lg:space-y-16">
           <SectionHero
@@ -164,9 +169,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
           {/* Main Content */}
           <div className="flex-1 flex flex-col w-full">
-            <div className="sticky top-0 z-10">
-              <TopNavbar categoryDetails={categories} classname='' />
-            </div>
+
             <div className="w-full">
               <RenderBlocks blocks={layout} />
             </div>
