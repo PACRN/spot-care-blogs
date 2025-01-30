@@ -4,6 +4,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import { Highlightedtemplate1 } from '@/components/Highlghted/HighlightedTemplate1'
+import RichText from '@/components/RichText'
 
 export const HighlightedBlock: React.FC<
   HighlightedBlockProps & {
@@ -52,7 +53,13 @@ export const HighlightedBlock: React.FC<
 
 
   return (
-    <div className="my-16" id={`block-${id}`}>
+    <div className="border-t" id={`block-${id}`}>
+      {introContent && (
+        <div className="mt-8 relative inline-flex items-center">
+          <div className="absolute left-0 w-10 h-10 bg-purple-300 dark:bg-purple-500 rounded-full" aria-hidden="true" />
+          <h2 className="relative z-10 pl-4"><RichText className="ml-0 max-w-[48rem]" data={introContent} enableGutter={false} /></h2>
+        </div>
+      )}
       <Highlightedtemplate1 posts={posts} />
     </div>
   )

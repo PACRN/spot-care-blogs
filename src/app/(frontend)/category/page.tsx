@@ -12,6 +12,8 @@ import { Highlightedtemplate1 } from '@/components/Highlghted/HighlightedTemplat
 import { CategoryResult } from '@/components/CategoryResult'
 import { TopNavbar } from '@/components/NavBar'
 import { SidebarProps } from '@/components/NavBar/SidebarProps'
+import Link from 'next/link'
+import { ParentTheme } from '@/components/ParentTheme'
 
 type Args = {
   searchParams: Promise<{
@@ -62,22 +64,35 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
 
   return (
-    <div className="flex min-h-screen">
+    <div className="min-h-screen">
       <PageClient />
-      {/* Sidebar */}
-      <div className="hidden lg:block w-64 border-r bg-background">
-        <div className="h-full py-6">
-          <TopNavbar categoryDetails={categoryDetails} classname='' selected={query} />
-        </div>
+      <div className="sticky top-0 z-10">
+        <TopNavbar categoryDetails={categoryDetails} classname='' selected={query} />
       </div>
+      <ParentTheme pageType='page' />
+      {/* Sidebar */}
+      {/* <div className="hidden lg:block w-64 border-r bg-background"> */}
+      {/* <div className="h-full py-6">
+          <TopNavbar categoryDetails={categoryDetails} classname='' selected={query} />
+        </div> */}
+      {/* </div> */}
       {/* Main Content */}
+
+      <div className="flex-1 container mx-auto">
+        <Link href={`/`} passHref
+          className="text-purple-500 hover:text-purple-700 font-normal py-2 rounded mb-10 w-full"
+        >
+          ← &nbsp;  Back
+        </Link>
+      </div>
+
       <div className="flex-1 p-8">
 
-        <div className="max-w-4xl mx-auto">
+        <div className=" mx-auto">
           {posts.totalDocs > 0 ? (
             <CategoryResult posts={posts.docs as CardPostData[]} />
           ) : (
-            <div className="container">No results found.</div>
+            <div className="container w-full text-center">No results found.</div>
           )}
         </div>
       </div>

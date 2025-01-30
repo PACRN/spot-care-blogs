@@ -71,7 +71,7 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <div className="nc-post-article relative flex px-10 gap-10 lg:container">
+      <div className="nc-post-article relative flex px-4 md:px-10 gap-10 lg:container border-b">
         {/* Left Panel */}
         <div className="hidden lg:block w-1/6 h-screen py-8 sticky top-0  overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 gap-10">
           <Link href={`/home`} passHref
@@ -83,11 +83,18 @@ export default async function Post({ params: paramsPromise }: Args) {
         </div>
 
         {/* Right Content Area */}
-        <div className="w-full flex flex-col gap-4 pt-8 flex-grow overflow-y-auto">
+        <div className="w-full flex flex-col gap-4 pt-4 flex-grow overflow-y-auto">
           <div className="">
             <div className='flex gap-10'>
               <div className="scrollbar-hide">
-                <h1 className="mb-6 text-3xl md:text-4xl lg:text-5xl">{post.title}</h1>
+                <div className="flex-1 mb-2 visible lg:hidden">
+                  <Link href={`/`} passHref
+                    className="text-purple-500 hover:text-purple-700 font-normal py-2 rounded mb-10 w-full"
+                  >
+                    ← &nbsp;  Back
+                  </Link>
+                </div>
+                <h1 className="mb-6 text-xl md:text-4xl lg:text-4xl font-semibold">{post.title}</h1>
 
                 <div className="my-5 flex flex-col sm:flex-row sm:justify-between">
                   <div className="uppercase text-sm mb-3 sm:mb-0">
@@ -123,11 +130,10 @@ export default async function Post({ params: paramsPromise }: Args) {
 
                 <PostHero post={post} />
                 <RichText
-                  className="max-w-[80rem]"
+                  className="max-w-[80rem] pb-8"
                   data={post.content}
                   enableGutter={false}
                 />
-                <hr className='mt-8 font-bold' />
 
               </div>
 
@@ -148,11 +154,14 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       </div>
       {post.relatedPosts && post.relatedPosts?.length > 0 && (
-        <div className='my-8'>
-          <h1 className="container w-full mx-auto text-3xl font-bold">Related Articles</h1>
+        <div className='container my-8'>
+          <div className="relative inline-flex items-center">
+            <div className="absolute left-0 w-10 h-10 bg-purple-300 dark:bg-purple-500 rounded-full" aria-hidden="true" />
+            <h2 className="relative  text-xl z-10 pl-4">Related Articles</h2>
+          </div>
 
           <RelatedPosts
-            className="container mx-auto lg:px-32 mb-8 mt-8 max-w-full "
+            className="mx-auto mb-8 mt-8 max-w-full "
             docs={post.relatedPosts.filter((post) => typeof post === 'object')}
           />
         </div>

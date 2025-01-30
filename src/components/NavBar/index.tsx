@@ -38,7 +38,6 @@ export const TopNavbar: React.FC<SidebarListProps> = ({ categoryDetails, classna
 
     const handleSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log("Searching for:", searchValue)
         // Here you can implement the actual search functionality
         // For example, you might want to navigate to a search results page:
         router.push(`/search?q=${encodeURIComponent(searchValue)}`)
@@ -71,13 +70,13 @@ export const TopNavbar: React.FC<SidebarListProps> = ({ categoryDetails, classna
 
 
 
-    return (<nav className="bg-background border-b xs:p-2">
+    return (<nav className="bg-background py-6  xs:px-2">
         <div className="mx-auto container">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between border-b">
 
                 <div className="relative w-full md:w-auto md:flex gap-x-6 mt-4 md:mt-0">
-                    <h2 className="text-2xl font-bold mb-4 md:mb-0 ">Recent Articles</h2>
-                    <div className="h-[34px] w-[1px] bg-gray-300 hidden md:block"></div>
+                    <h2 className="text-2xl font-normal mb-4 md:mb-0 ">Recent Articles</h2>
+                    <div className="h-[34px] w-[1px] border-r hidden md:block"></div>
 
                     {showLeftArrow && (
                         <Button
@@ -98,7 +97,7 @@ export const TopNavbar: React.FC<SidebarListProps> = ({ categoryDetails, classna
                             <Link
                                 key={item.title}
                                 href={`/category?q=${item.title}`}
-                                className={`group flex items-center rounded-xl px-1 py-2 text-sm font-medium  hover:text-purple-700 whitespace-nowrap ${item.title === selected ? "bg-purple-300 text-purple-700" : ""
+                                className={`group flex items-center rounded-xl px-1 py-2 text-sm font-medium  hover:text-purple-700 whitespace-nowrap ${item.title === selected ? " text-purple-700" : ""
                                     }`}
                             >
                                 <span className="">{item.title}</span>
@@ -120,13 +119,13 @@ export const TopNavbar: React.FC<SidebarListProps> = ({ categoryDetails, classna
                     <form onSubmit={handleSearch} className="relative w-full max-w-md outline-none outline-0">
                         <Input
                             className="h-12 pr-12 border-0 outline-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:ring-transparent focus:ring-opacity-0"
-                            placeholder="Search topics"
+                            placeholder="Search articles"
                             type="search"
                             value={searchValue}
                             onChange={handleSearchChange}
                         />
                         <Button
-                            className="absolute right-0 top-0 h-12 w-12 bg-transparent hover:bg-purple-300 hover:rounded-full"
+                            className="absolute right-0 top-0 h-12 w-12 bg-transparent hover:bg-transparent hover:rounded-full"
                             size="icon"
                             type="submit"
                         >

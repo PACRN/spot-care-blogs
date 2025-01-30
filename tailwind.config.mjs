@@ -132,8 +132,8 @@ export default {
         warning: 'hsl(var(--warning))',
       },
       fontFamily: {
-        mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-poppins)'],
+        sans: ['var(--font-poppins)'],
       },
       keyframes: {
         'accordion-down': {
@@ -166,7 +166,7 @@ export default {
               },
               h2: {
                 fontSize: '1.25rem',
-                fontWeight: 600,
+                fontWeight: 500,
               },
             },
           ],
@@ -179,6 +179,7 @@ export default {
               },
               h2: {
                 fontSize: '1.5rem',
+                fontWeight: 500,
               },
             },
           ],

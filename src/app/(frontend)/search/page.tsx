@@ -8,6 +8,8 @@ import { Post } from '@/payload-types'
 import { Search } from '@/search/Component'
 import PageClient from './page.client'
 import { CardPostData } from '@/components/Card'
+import { ParentTheme } from '@/components/ParentTheme'
+import Link from 'next/link'
 
 type Args = {
   searchParams: Promise<{
@@ -63,8 +65,17 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   return (
     <div className="pt-24 pb-24">
       <PageClient />
+      <ParentTheme pageType='page' />
       <div className="container mb-16">
+        <div className="flex-1 container mx-auto">
+          <Link href={`/`} passHref
+            className="text-purple-500 hover:text-purple-700 font-normal py-2 rounded mb-10 w-full"
+          >
+            ← &nbsp;  Back
+          </Link>
+        </div>
         <div className="prose dark:prose-invert max-w-none text-center">
+
           <h1 className="mb-8 lg:mb-16">Search</h1>
 
           <div className="max-w-[50rem] mx-auto">
@@ -74,9 +85,12 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       </div>
 
       {posts.totalDocs > 0 ? (
-        <CollectionArchive posts={posts.docs as CardPostData[]} />
+        <div className='container my-8'>
+          <CollectionArchive posts={posts.docs as CardPostData[]} />
+        </div>
+
       ) : (
-        <div className="container">No results found.</div>
+        <div className="container w-full text-center">No results found.</div>
       )}
     </div>
   )

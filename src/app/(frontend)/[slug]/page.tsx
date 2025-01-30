@@ -19,6 +19,7 @@ import { TopNavbar } from '@/components/NavBar'
 import Link from 'next/link'
 import { Media as CompMedia } from '@/components/Media'
 import SectionHero from '@/components/PageHero'
+import { ParentTheme } from '@/components/ParentTheme'
 
 type adsHolder = {
   adImage: Media | number;
@@ -146,14 +147,15 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <div className="sticky top-0 z-10">
+      <div className="z-10">
         <TopNavbar categoryDetails={categories} classname='' />
       </div>
 
       <div className='nc-page-article'>
 
         {/* <RenderHero {...hero} /> */}
-        <div className="container py-16 lg:py-16 space-y-16 lg:space-y-16">
+        <ParentTheme pageType="page" />
+        <div className="container py-12">
           <SectionHero
             rightImg={rightImg.src}
             heading="Spot Care Blogs 👋"

@@ -32,12 +32,12 @@ export const ArchiveBlock: React.FC<
       limit,
       ...(flattenedCategories && flattenedCategories.length > 0
         ? {
-            where: {
-              categories: {
-                in: flattenedCategories,
-              },
+          where: {
+            categories: {
+              in: flattenedCategories,
             },
-          }
+          },
+        }
         : {}),
     })
 
@@ -53,10 +53,11 @@ export const ArchiveBlock: React.FC<
   }
 
   return (
-    <div className="my-16" id={`block-${id}`}>
+    <div className="border-t pb-4" id={`block-${id}`}>
       {introContent && (
-        <div className="container mb-16">
-          <RichText className="ml-0 max-w-[48rem]" data={introContent} enableGutter={false} />
+        <div className="my-8 relative inline-flex items-center">
+          <div className="absolute left-0 w-10 h-10 bg-purple-300 dark:bg-purple-500 rounded-full" aria-hidden="true" />
+          <h2 className="relative z-10 pl-4"><RichText className="ml-0 max-w-[48rem]" data={introContent} enableGutter={false} /></h2>
         </div>
       )}
       <CollectionArchive posts={posts} />

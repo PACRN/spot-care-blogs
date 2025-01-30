@@ -26,7 +26,7 @@ export const Highlightedtemplate1: React.FC<Props> = (props) => {
     }, [posts])
 
     return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="mx-auto py-8">
             <div className="grid lg:grid-cols-12 gap-8">
                 {/* Featured Article */}
                 <div className="lg:col-span-6 space-y-6">
@@ -46,8 +46,8 @@ export const Highlightedtemplate1: React.FC<Props> = (props) => {
                                             <Badge key={category.id} name={category.title} color="green" />
                                         ))}
                                     </div>
-                                    <h2 className="text-xl sm:text-2xl font-bold tracking-tight line-clamp-2">{firstPost?.title}</h2>
-                                    <p className="text-muted-foreground line-clamp-3">{firstPost?.meta?.description}</p>
+                                    <h2 className="text-lg sm:text-xl font-semibold tracking-tight line-clamp-2">{firstPost?.title}</h2>
+                                    <p className="text-muted-foreground line-clamp-2">{firstPost?.meta?.description}</p>
                                 </div>
                             </div>
                         </Link>
