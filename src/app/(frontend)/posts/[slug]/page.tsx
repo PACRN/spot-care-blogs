@@ -71,7 +71,7 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <div className="nc-post-article relative flex px-4 md:px-10 gap-10 lg:container border-b">
+      <div className="nc-post-article relative flex px-4 md:px-10 gap-10 lg:container">
         {/* Left Panel */}
         <div className="hidden lg:block w-1/6 h-screen py-8 sticky top-0  overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 gap-10">
           <Link href={`/home`} passHref
@@ -151,7 +151,9 @@ export default async function Post({ params: paramsPromise }: Args) {
             </div>
           </div>
         </div>
-
+      </div>
+      <div className='container my-4'>
+        <hr />
       </div>
       {post.relatedPosts && post.relatedPosts?.length > 0 && (
         <div className='container my-8'>

@@ -42,9 +42,9 @@ export const TableOfContents: React.FC<{ post: Post, classname?: string }> = ({ 
                 {headings.map((heading, index) => (
                     <li
                         key={index}
-                        className={`pl-1 cursor-pointer text-xs py-2`}
+                        className={`pl-1 cursor-pointer text-xs py-2 hover:text-primary`}
                     >
-                        <a href={`/posts/${post.slug}#${heading.text.replaceAll(" ", "-")}`}>{heading.text}</a>
+                        <a className="line-clamp-3" href={`/posts/${post.slug}#${heading.text.replaceAll(" ", "-")}`}>{heading.text}</a>
                     </li>
                 ))}
             </ul>
