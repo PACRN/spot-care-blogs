@@ -10,6 +10,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SinglePostBlock } from './SinglePost/Component'
 import { HighlightedBlock } from './HighlightedBlock/Component'
+import { MarkerBlock } from './MarkerBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,7 +19,8 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   singlePost: SinglePostBlock,
-  highlighted: HighlightedBlock
+  highlighted: HighlightedBlock,
+  markerBlock: MarkerBlock,
 }
 
 export const RenderBlocks: React.FC<{

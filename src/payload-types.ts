@@ -1672,6 +1672,16 @@ export interface CodeBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MarkerBlock".
+ */
+export interface MarkerBlock {
+  title: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'marker';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {

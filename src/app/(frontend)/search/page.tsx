@@ -67,7 +67,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       <PageClient />
       <ParentTheme pageType='page' />
       <div className="container mb-16">
-        <div className="flex-1 container mx-auto">
+        <div className="flex-1 mx-auto">
           <Link href={`/`} passHref
             className="text-purple-500 hover:text-purple-700 font-normal py-2 rounded mb-10 w-full"
           >

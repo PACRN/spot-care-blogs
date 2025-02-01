@@ -6,6 +6,15 @@ import {
   ParagraphFeature,
   lexicalEditor,
   UnderlineFeature,
+  AlignFeature,
+  ChecklistFeature,
+  RelationshipFeature,
+  BlockquoteFeature,
+  UploadFeature,
+  EXPERIMENTAL_TableFeature,
+  OrderedListFeature,
+  UnorderedListFeature,
+  HeadingFeature,
 } from '@payloadcms/richtext-lexical'
 
 export const defaultLexical: Config['editor'] = lexicalEditor({
@@ -37,6 +46,14 @@ export const defaultLexical: Config['editor'] = lexicalEditor({
           ]
         },
       }),
+      AlignFeature(),
+      ChecklistFeature(),
+      RelationshipFeature(),
+      BlockquoteFeature(),
+      EXPERIMENTAL_TableFeature(),
+      OrderedListFeature(),
+      UnorderedListFeature(),
+      UploadFeature(),
     ]
   },
 })

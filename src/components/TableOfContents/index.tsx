@@ -13,16 +13,12 @@ type TOCProps = {
 const extractHeadings = (node: any, level: number = 0): Heading[] => {
     let headings: Heading[] = [];
 
-    if (node.type === "heading" && node.tag === "h2") {
-        const textNode = node.children?.find((child: any) => child.type === "text");
-        if (textNode) {
-            headings.push({ text: textNode.text, level: level + (node.tag === "h2" ? 1 : 2) });
-        }
-    }
-
     if (node.children && Array.isArray(node.children)) {
         for (const child of node.children) {
-            headings = [...headings, ...extractHeadings(child, level)];
+            if (child.type === "block") {
+                console.log(child.fields.title);
+                headings.push({ text: child.fields.title, level: 2 });
+            }
         }
     }
 
@@ -48,7 +44,7 @@ export const TableOfContents: React.FC<{ post: Post, classname?: string }> = ({ 
                         key={index}
                         className={`pl-1 cursor-pointer text-xs py-2`}
                     >
-                        {heading.text}
+                        <a href={`/posts/${post.slug}#${heading.text.replaceAll(" ", "-")}`}>{heading.text}</a>
                     </li>
                 ))}
             </ul>
