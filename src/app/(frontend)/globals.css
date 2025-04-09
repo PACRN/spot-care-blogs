@@ -115,3 +115,8 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+p {
+  /* font-size: 1rem; */
+  font-weight: 400;
+}

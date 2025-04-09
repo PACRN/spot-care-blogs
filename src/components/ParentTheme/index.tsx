@@ -10,19 +10,21 @@ export const ParentTheme = ({ pageType }: { pageType: string }) => {
 
     useEffect(() => {
         const handleMessage = (event: MessageEvent) => {
-            if (event.data && event.data.type === "PARENT_THEME_MESSAGE") {
-                const theme = event.data.data;
-                if (theme === "dark" || theme === "light") {
-                    setTheme(theme)
-                }
-            }
+            // if (event.data && event.data.type === "PARENT_THEME_MESSAGE") {
+            //     const theme = event.data.data;
+            //     if (theme === "dark" || theme === "light") {
+            //         setTheme(theme)
+            //     }
+            // }
         }
 
         window.addEventListener("message", handleMessage)
 
+
         return () => {
             window.removeEventListener("message", handleMessage)
         }
+
     }, [])
 
     useEffect(() => {

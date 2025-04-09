@@ -33,7 +33,7 @@
     "@payloadcms/plugin-form-builder": "latest",
     "@payloadcms/plugin-nested-docs": "latest",
     "@payloadcms/plugin-redirects": "latest",
-    "@payloadcms/plugin-search": "latest",
+    "@payloadcms/plugin-search": "^3.18.0",
     "@payloadcms/plugin-seo": "latest",
     "@payloadcms/richtext-lexical": "latest",
     "@payloadcms/storage-azure": "latest",
@@ -61,7 +61,8 @@
     "sharp": "0.32.6",
     "tailwind-merge": "^2.3.0",
     "tailwind-scrollbar-hide": "^2.0.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

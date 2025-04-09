@@ -63,12 +63,12 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <div className="mx-10 py-12 w-full">
       <PageClient />
-      <ParentTheme pageType='page' />
-      <div className="container mb-16">
+      {/* <ParentTheme pageType='page' /> */}
+      <div className="mb-16">
         <div className="flex-1 mx-auto">
-          <Link href={`/`} passHref
+          <Link href={`/home`}
             className="text-purple-500 hover:text-purple-700 font-normal py-2 rounded mb-10 w-full"
           >
             ← &nbsp;  Back
@@ -76,16 +76,16 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         </div>
         <div className="prose dark:prose-invert max-w-none text-center">
 
-          <h1 className="mb-8 lg:mb-16">Search</h1>
+          <h1 className="mb-8">Search</h1>
 
           <div className="max-w-[50rem] mx-auto">
-            <Search />
+            <Search selected={query} />
           </div>
         </div>
       </div>
 
       {posts.totalDocs > 0 ? (
-        <div className='container my-8'>
+        <div className='my-4'>
           <CollectionArchive posts={posts.docs as CardPostData[]} />
         </div>
 

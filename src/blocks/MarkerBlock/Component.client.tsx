@@ -9,6 +9,6 @@ export const Marker: React.FC<Props> = ({ title }) => {
   if (!title) return null
 
   return (
-    <span className='text-2xl font-extrabold' id={title.replaceAll(" ", "-")}>{title}</span>
+    <span className='text-xl font-extrabold' id={title.replaceAll(" ", "-")}>{title}</span>
   )
 }

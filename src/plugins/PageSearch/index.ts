@@ -95,11 +95,14 @@ const PageSearch =
                   afterChange: [
                     ...(existingHooks?.afterChange || []),
                     async (args: any) => {
-                      beforeSyncWithSearch({
-                        ...args,
-                        collection: collection.slug,
-                        searchConfig,
-                      })
+                      if (collection.slug) {
+                        beforeSyncWithSearch({
+                          ...args,
+                          collection: collection.slug,
+                          searchConfig,
+                        })
+                      }
+
                     },
                   ],
                   afterDelete: [...(existingHooks?.afterDelete || []), deleteFromSearch],

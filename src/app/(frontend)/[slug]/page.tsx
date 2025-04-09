@@ -10,16 +10,12 @@ import { homeStatic } from '@/endpoints/seed/home-static'
 import type { Category, HomeAd, Media, Page as PageType } from '@/payload-types'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { SidebarProps } from '@/components/NavBar/SidebarProps'
 import { TopNavbar } from '@/components/NavBar'
-import Link from 'next/link'
-import { Media as CompMedia } from '@/components/Media'
 import SectionHero from '@/components/PageHero'
-import { ParentTheme } from '@/components/ParentTheme'
 
 type adsHolder = {
   adImage: Media | number;
@@ -140,7 +136,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page
 
   return (
-    <article className="">
+    <article className="relative block w-full h-full">
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
@@ -151,11 +147,11 @@ export default async function Page({ params: paramsPromise }: Args) {
         <TopNavbar categoryDetails={categories} classname='' />
       </div>
 
-      <div className='nc-page-article'>
+      <div className='nc-page-article relative gap-10'>
 
         {/* <RenderHero {...hero} /> */}
-        <ParentTheme pageType="page" />
-        <div className="container py-12">
+        {/* <ParentTheme pageType="page" /> */}
+        <div className="px-10 py-12">
           <SectionHero
             rightImg={rightImg.src}
             heading="Spot Care Blogs 👋"
@@ -165,23 +161,14 @@ export default async function Page({ params: paramsPromise }: Args) {
         </div>
 
         {/* Blog Content */}
-        <div className="flex h-screen">
-
-          {/* Left Content */}
-
-          {/* Main Content */}
+        <div className="flex ">
           <div className="flex-1 flex flex-col w-full">
-
             <div className="w-full">
               <RenderBlocks blocks={layout} />
             </div>
           </div>
-          {/* Right Content */}
-
         </div>
       </div>
-
-
     </article>
   )
 }

@@ -69,7 +69,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       <div className="sticky top-0 z-10">
         <TopNavbar categoryDetails={categoryDetails} classname='' selected={query} />
       </div>
-      <ParentTheme pageType='page' />
+      {/* <ParentTheme pageType='page' /> */}
       {/* Sidebar */}
       {/* <div className="hidden lg:block w-64 border-r bg-background"> */}
       {/* <div className="h-full py-6">
@@ -78,7 +78,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       {/* </div> */}
       {/* Main Content */}
 
-      <div className="flex-1 container mx-auto">
+      <div className="flex-1  mx-auto">
         <Link href={`/`} passHref
           className="text-purple-500 hover:text-purple-700 font-normal py-2 rounded mb-10 w-full"
         >

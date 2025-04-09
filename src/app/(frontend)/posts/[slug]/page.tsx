@@ -71,19 +71,18 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <div className="nc-post-article relative flex px-4 md:px-10 gap-10 lg:container">
-        {/* Left Panel */}
-        <div className="hidden lg:block w-1/6 h-screen py-8 sticky top-0  overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 gap-10">
+      <div className="nc-post-article relative flex px-10 gap-10">
+
+        <div className="hidden lg:block w-1/4 h-screen py-10 sticky top-0  overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 gap-10">
           <Link href={`/home`} passHref
-            className="text-purple-500 hover:text-purple-700 font-normal py-2 rounded mb-10"
+            className="text-purple-500 hover:text-purple-700 font-normal py-4 rounded mb-10"
           >
             ← &nbsp;  Back
           </Link>
-          <TableOfContents post={post} classname='mt-10' />
+          <TableOfContents post={post} classname='mt-14' />
         </div>
 
-        {/* Right Content Area */}
-        <div className="w-full flex flex-col gap-4 pt-4 flex-grow overflow-y-auto">
+        <div className="w-full flex flex-col gap-4 pt-8 flex-grow overflow-y-auto">
           <div className="">
             <div className='flex gap-10'>
               <div className="scrollbar-hide">
@@ -130,43 +129,48 @@ export default async function Post({ params: paramsPromise }: Args) {
 
                 <PostHero post={post} />
                 <RichText
-                  className="max-w-[80rem] pb-8"
+                  className="max-w-[80rem] pb-8 pt-4"
                   data={post.content}
                   enableGutter={false}
                 />
 
               </div>
 
-              <div className="hidden lg:block w-1/4 overflow-hidden">
-                {
-                  ads.map((ad: Ad, index) => {
-                    return <div className='lg:h[10rem] lg:w-[10rem]  rounded-2xl overflow-hidden my-10 cursor-pointer'>
-                      <Link href={ad.adUrl}>
-                        <Media imgClassName="object-contain" resource={ad.adImage} />
-                      </Link>
-                    </div>
-                  })
-                }
-              </div>
+
             </div>
           </div>
         </div>
-      </div>
-      <div className='container my-4'>
-        <hr />
+
+        <div className="hidden lg:block w-1/4 h-screen py-8 sticky top-0  overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 gap-10">
+          {
+            ads.map((ad: Ad, index) => {
+              return <div className='lg:h[10rem] lg:w-[10rem]  rounded-2xl overflow-hidden my-10 cursor-pointer' key={ad.id}>
+                <Link href={ad.adUrl}>
+                  <Media imgClassName="object-contain" resource={ad.adImage} />
+                </Link>
+              </div>
+            })
+          }
+        </div>
       </div>
       {post.relatedPosts && post.relatedPosts?.length > 0 && (
-        <div className='container my-8'>
-          <div className="relative inline-flex items-center">
-            <div className="absolute left-0 w-10 h-10 bg-purple-300 dark:bg-purple-500 rounded-full" aria-hidden="true" />
-            <h2 className="relative  text-xl z-10 pl-4">Related Articles</h2>
+        <div>
+          <div className='container my-4'>
+            <hr />
           </div>
+          <div className='container my-8'>
+            <div className="relative inline-flex items-center">
+              <div className="absolute left-0 w-10 h-10 bg-purple-300 dark:bg-purple-500 rounded-full" aria-hidden="true" />
+              <h2 className="relative  text-xl z-10 pl-4">Related Articles</h2>
+            </div>
 
-          <RelatedPosts
-            className="mx-auto mb-8 mt-8 max-w-full "
-            docs={post.relatedPosts.filter((post) => typeof post === 'object')}
-          />
+            <RelatedPosts
+              className="mx-auto mb-8 mt-8 max-w-full "
+              docs={post.relatedPosts.filter((post) => typeof post === 'object')}
+            />
+          </div>
         </div>
+
 
       )}
     </article >

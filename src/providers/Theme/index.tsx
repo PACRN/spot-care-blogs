@@ -27,9 +27,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       document.documentElement.setAttribute('data-theme', implicitPreference || '')
       if (implicitPreference) setThemeState(implicitPreference)
     } else {
-      setThemeState(themeToSet)
-      window.localStorage.setItem(themeLocalStorageKey, themeToSet)
-      document.documentElement.setAttribute('data-theme', themeToSet)
+      setThemeState("light")
+      window.localStorage.setItem(themeLocalStorageKey, "light")
+      document.documentElement.setAttribute('data-theme', "light")
     }
   }, [])
 
@@ -48,7 +48,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     document.documentElement.setAttribute('data-theme', themeToSet)
-    setThemeState(themeToSet)
+    setThemeState("light")
   }, [])
 
   return <ThemeContext.Provider value={{ setTheme, theme }}>{children}</ThemeContext.Provider>

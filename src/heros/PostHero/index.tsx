@@ -18,7 +18,7 @@ export const PostHero: React.FC<{
 
   return (
     <div className="relative rounded-xl overflow-hidden w-full mb-4 ">
-      <ParentTheme pageType='post' />
+      {/* <ParentTheme pageType='post' /> */}
       {/* <div className="z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
         <div className="col-start-1 col-span-1 md:col-start-1 md:col-span-2 mx-20">
 

@@ -1,13 +1,10 @@
+'use client';
 import { Post } from "@/payload-types";
-import React from "react";
+import React, { useState } from "react";
 
 type Heading = {
     text: string;
     level: number;
-};
-
-type TOCProps = {
-    json: any; // Replace `any` with a specific type if available
 };
 
 const extractHeadings = (node: any, level: number = 0): Heading[] => {
@@ -16,7 +13,6 @@ const extractHeadings = (node: any, level: number = 0): Heading[] => {
     if (node.children && Array.isArray(node.children)) {
         for (const child of node.children) {
             if (child.type === "block") {
-                console.log(child.fields.title);
                 headings.push({ text: child.fields.title, level: 2 });
             }
         }
@@ -26,8 +22,7 @@ const extractHeadings = (node: any, level: number = 0): Heading[] => {
 };
 
 export const TableOfContents: React.FC<{ post: Post, classname?: string }> = ({ post, classname }) => {
-
-
+    const [activeHeading, setActiveHeading] = useState(0);
 
     if (!post.content) {
         return null;
@@ -37,18 +32,34 @@ export const TableOfContents: React.FC<{ post: Post, classname?: string }> = ({ 
 
     return (
         <div className={classname}>
-            <h2 className="text-md font-semibold mb-2">Table of Contents</h2>
-            <ul className="list-none space-y-1">
-                {headings.map((heading, index) => (
-                    <li
-                        key={index}
-                        className={`pl-1 cursor-pointer text-xs py-2 hover:text-primary`}
-                    >
-                        <a className="line-clamp-3" href={`/posts/${post.slug}#${heading.text.replaceAll(" ", "-")}`}>{heading.text}</a>
-                    </li>
-                ))}
+            <h2 className="text-xl font-semibold` mb-6">Table of Content</h2>
+            <ul className="list-none space-y-4">
+                {headings.map((heading, index) => {
+                    if (heading.text) {
+                        return (
+                            <li
+                                key={index}
+                                className={`relative cursor-pointer group`}
+                            >
+                                <div
+                                    className={`absolute left-0 top-0 w-[3px] h-full ${index === activeHeading ? 'bg-purple-500' : 'bg-transparent group-hover:bg-purple-200'
+                                        }`}
+                                />
+                                <a
+                                    className={`block pl-4 py-1 text-xs transition-colors ${index === activeHeading
+                                        ? 'text-purple-500 font-medium'
+                                        : 'text-gray-700 dark:text-white hover:text-purple-500'
+                                        }`}
+                                    href={`/posts/${post.slug}#${heading.text.replaceAll(" ", "-")}`}
+                                    onClick={() => setActiveHeading(index)}
+                                >
+                                    {heading.text}
+                                </a>
+                            </li>
+                        );
+                    }
+                })}
             </ul>
         </div>
     );
 };
-

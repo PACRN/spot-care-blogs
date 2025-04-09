@@ -24,7 +24,7 @@ export const HeaderThemeProvider = ({ children }: { children: React.ReactNode })
   )
 
   const setHeaderTheme = useCallback((themeToSet: Theme | null) => {
-    setThemeState(themeToSet)
+    setThemeState("light")
   }, [])
 
   return (
