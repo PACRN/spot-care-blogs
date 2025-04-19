@@ -21,7 +21,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   const payload = await getPayload({ config: configPromise })
 
   const posts = await payload.find({
-    collection: 'search',
+    collection: 'posts',
     depth: 1,
     limit: 12,
     select: {
@@ -29,6 +29,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       slug: true,
       categories: true,
       meta: true,
+      heroImage: true,
     },
     // pagination: false reduces overhead if you don't need totalDocs
     pagination: false,
@@ -63,24 +64,21 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   })
 
   return (
-    <div className="mx-10 py-12 w-full">
+    <div className="mx-10 pt-8 pb-8">
       <PageClient />
       {/* <ParentTheme pageType='page' /> */}
-      <div className="mb-16">
-        <div className="flex-1 mx-auto">
-          <Link href={`/home`}
-            className="text-purple-500 hover:text-purple-700 font-normal py-2 rounded mb-10 w-full"
-          >
-            ← &nbsp;  Back
-          </Link>
+      <div className="w-full flex flex-col sm:flex-row justify-between">
+        <Link
+          href={`/home`}
+          className="text-purple-600 hover:text-purple-800 text-sm font-medium transition-colors"
+        >
+          ← Back to Home
+        </Link>
+        <div className="flex items-center justify-center sm:justify-end mt-4 sm:mt-0">
+          <span className="text-2xl font-bold">Search Results</span>
         </div>
-        <div className="prose dark:prose-invert max-w-none text-center">
-
-          <h1 className="mb-8">Search</h1>
-
-          <div className="max-w-[50rem] mx-auto">
-            <Search selected={query} />
-          </div>
+        <div className="w-full sm:w-auto flex-grow sm:flex-grow-0">
+          <Search selected={query} />
         </div>
       </div>
 

@@ -69,16 +69,8 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       <div className="sticky top-0 z-10">
         <TopNavbar categoryDetails={categoryDetails} classname='' selected={query} />
       </div>
-      {/* <ParentTheme pageType='page' /> */}
-      {/* Sidebar */}
-      {/* <div className="hidden lg:block w-64 border-r bg-background"> */}
-      {/* <div className="h-full py-6">
-          <TopNavbar categoryDetails={categoryDetails} classname='' selected={query} />
-        </div> */}
-      {/* </div> */}
-      {/* Main Content */}
 
-      <div className="flex-1  mx-auto">
+      <div className="px-10 pt-2 w-full">
         <Link href={`/`} passHref
           className="text-purple-500 hover:text-purple-700 font-normal py-2 rounded mb-10 w-full"
         >
@@ -86,15 +78,12 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         </Link>
       </div>
 
-      <div className="flex-1 p-8">
-
-        <div className=" mx-auto">
-          {posts.totalDocs > 0 ? (
-            <CategoryResult posts={posts.docs as CardPostData[]} />
-          ) : (
-            <div className="container w-full text-center">No results found.</div>
-          )}
-        </div>
+      <div className="px-10 py-4">
+        {posts.totalDocs > 0 ? (
+          <CategoryResult posts={posts.docs as CardPostData[]} />
+        ) : (
+          <div className="container w-full text-center">No results found.</div>
+        )}
       </div>
     </div>
   )

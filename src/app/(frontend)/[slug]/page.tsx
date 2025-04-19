@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import rightImg from "../../../images/about-hero-right.png"
+import rightImg from "../../../images/right-banner.png"
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -151,7 +151,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
         {/* <RenderHero {...hero} /> */}
         {/* <ParentTheme pageType="page" /> */}
-        <div className="px-10 py-12">
+        <div className="px-10 py-8">
           <SectionHero
             rightImg={rightImg.src}
             heading="Spot Care Blogs 👋"

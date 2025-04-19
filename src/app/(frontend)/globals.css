@@ -28,11 +28,13 @@ html {
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 213 94% 62%;
+    --primary: 234 63% 46%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 191 100% 50%;
+
+    --secondary: 188 99% 46%;
     --secondary-foreground: 222.2 47.4% 11.2%;
+
 
     --tertiary: 276 90% 52%;
     --tertiary-foreground: 210 40% 98%;

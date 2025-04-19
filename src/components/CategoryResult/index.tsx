@@ -29,7 +29,7 @@ export const CategoryResult: React.FC<Props> = (props) => {
     }, [posts])
 
     return (
-        <div className="container mx-auto rounded-3x">
+        <div className="mx-auto rounded-3x">
             <div className="grid lg:grid-cols-5 gap-6">
                 {/* Featured Article */}
                 <div className="lg:col-span-3">

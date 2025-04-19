@@ -67,7 +67,7 @@ export const TopNavbar: React.FC<SidebarListProps> = ({ categoryDetails, classna
 
 
 
-    return (<nav className="bg-background py-6  xs:px-2">
+    return (<nav className="bg-background py-2  xs:px-2">
         <div className="mx-auto px-10">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between border-b">
 
