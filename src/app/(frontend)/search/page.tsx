@@ -64,7 +64,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   })
 
   return (
-    <div className="mx-10 pt-8 pb-8">
+    <div className="mx-0 md:mx-10 py-4">
       <PageClient />
       {/* <ParentTheme pageType='page' /> */}
       <div className="w-full flex flex-col sm:flex-row justify-between">

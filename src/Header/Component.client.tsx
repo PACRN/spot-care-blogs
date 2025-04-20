@@ -14,6 +14,7 @@ import SearchSelector from './SearchSelector'
 import uiUseStore from '@/store/UIStore'
 import HeroSearchFormSmall from './HeroSearchForm/HeroSearchFormSmall'
 import useOutsideAlerter from './hooks/useOutsideAlerter'
+import { MenuIcon, SearchIcon } from 'lucide-react'
 
 interface HeaderClientProps {
   data: Header
@@ -41,7 +42,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     isLoggedIn,
     setIsLoggedIn,
     setShowLogin,
-    setIsHomePage
+    setIsHomePage,
+    setShowHeroMobileSearch
   } = uiUseStore();
 
   useEffect(() => {
@@ -164,14 +166,14 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             "relative xs:px-5 md:px-10  py-3 flex"
           }
         >
-          <div className="w-full flex items-center justify-between">
+          <div className="w-full flex items-center justify-between px-4 lg:px-0">
 
             <Link href="https://spot.care">
               <Logo loading="eager" priority="high" className="transition-opacity duration-700 ease-in w-54" />
             </Link>
 
-            <div className="xs:hidden xl:block ">
-              <div className="xs:block">{renderButtonOpenHeroSearch()}</div>
+            <div className="hidden xl:block">
+              <div className="hidden lg:block">{renderButtonOpenHeroSearch()}</div>
               <div className="lg:hidden w-full max-w-lg mx-auto"></div>
               {renderHeroSearch()}
             </div>
@@ -193,6 +195,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               </div>
               <div className="lg:hidden flex items-center space-x-3">
 
+              </div>
+              <div className='block px-1 md:hidden'>
+                <MenuIcon className='text-primary' onClick={() => { setShowHeroMobileSearch(true) }} />
               </div>
             </div>
 

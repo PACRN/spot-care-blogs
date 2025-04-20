@@ -70,7 +70,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         <TopNavbar categoryDetails={categoryDetails} classname='' selected={query} />
       </div>
 
-      <div className="px-10 pt-2 w-full">
+      <div className="px-0 md:px-10 pt-2 w-full">
         <Link href={`/`} passHref
           className="text-purple-500 hover:text-purple-700 font-normal py-2 rounded mb-10 w-full"
         >
@@ -78,7 +78,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         </Link>
       </div>
 
-      <div className="px-10 py-4">
+      <div className="px-0 md:px-10 py-4">
         {posts.totalDocs > 0 ? (
           <CategoryResult posts={posts.docs as CardPostData[]} />
         ) : (

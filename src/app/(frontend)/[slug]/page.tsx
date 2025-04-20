@@ -151,7 +151,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
         {/* <RenderHero {...hero} /> */}
         {/* <ParentTheme pageType="page" /> */}
-        <div className="px-10 py-8">
+        <div className="px-0 md:px-10 py-8">
           <SectionHero
             rightImg={rightImg.src}
             heading="Spot Care Blogs 👋"

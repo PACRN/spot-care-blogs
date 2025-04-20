@@ -18,6 +18,7 @@ import { getServerSideURL } from '@/utilities/getURL'
 import Footer from '@/components/Footer/Footer';
 
 import "@/components/line-awesome-1.3.0/css/line-awesome.min.css";
+import SearchMobile from '@/components/SearchMobile/SearchMobile';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <div className='mx-auto w-full px-4 sm:px-6 lg:px-0 max-w-screen-2xl'>
             {children}
           </div>
+          <SearchMobile />
           <Footer />
         </Providers>
       </body>
