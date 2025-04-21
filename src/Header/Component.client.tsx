@@ -140,7 +140,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           : "-translate-x-0 -translate-y-[90px] scale-x-[0.395] scale-y-[0.6] opacity-0 invisible pointer-events-none"
           }`}
       >
-        <div className={`w-full max-w-5xl mx-auto pb-6`}>
+        <div className={`w-full max-w-5xl mx-auto pb-0`}>
           <HeroSearchFormSmall />
         </div>
       </div>
@@ -157,7 +157,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       <header ref={headerInnerRef} className={`sticky top-0 z-40 border-b`}>
         <div
           className={`bg-white dark:bg-neutral-900 absolute h-full inset-x-0 top-0 transition-transform will-change-[transform,opacity]
-          ${showHeroSearch ? "duration-75" : ""} ${showHeroSearch ? "md:scale-y-[3.2]" : ""
+          ${showHeroSearch ? "duration-75" : ""} ${showHeroSearch ? "md:scale-y-[2.9]" : ""
             }`}
         ></div>
         <div

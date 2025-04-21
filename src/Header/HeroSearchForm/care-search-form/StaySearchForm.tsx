@@ -24,22 +24,22 @@ const StaySearchForm: FC<{}> = () => {
     return (
       <div
         className={`mx-auto relative  flex rounded-full  bg-white dark:bg-neutral-800 ${isHomePage
-            ? "shadow-xl dark:shadow-2xl"
-            : "border border-neutral-200 dark:border-neutral-6000"
+          ? "shadow-xl dark:shadow-2xl"
+          : "border border-neutral-200 dark:border-neutral-6000"
           }`}
       >
         <CareTypeInput className="flex-1" mobileClassName="" />
         <div
           className={`self-center h-8 py-2 ${isShowCareVerticalLine
-              ? "border-r border-slate-200 dark:border-slate-700 "
-              : ""
+            ? "border-r border-slate-200 dark:border-slate-700 "
+            : ""
             }`}
         ></div>
         <LocationInput className="flex-1" />
         <div
           className={`self-center h-8 py-2 ${isHeaderBorderVisible
-              ? "border-r border-slate-200 dark:border-slate-700"
-              : ""
+            ? "border-r border-slate-200 dark:border-slate-700"
+            : ""
             }`}
         ></div>
         <RadiusInput className={`flex-1`} />

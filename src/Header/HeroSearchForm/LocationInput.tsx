@@ -188,7 +188,7 @@ const LocationInput: FC<LocationInputProps> = ({
           setIsHeaderBorderVisible(false);
           setIsShowCareVeticalLine(false);
         }}
-        className={`flex px-10 z-10 flex-1 relative [ nc-hero-field-padding ] flex-shrink-0 items-center space-x-3 cursor-pointer focus:outline-none text-left ${showPopover ? "nc-hero-field-focused" : ""
+        className={`flex px-10 z-10 flex-1 relative [ nc-hero-field-padding ] flex-shrink-0 items-center space-x-3 cursor-pointer focus:outline-none text-left ${showPopover ? "shadow-[0_4px_16px_#11111a0d,_0_8px_32px_#11111a0d] rounded-full" : ""
           } dark:text-white text-black ${mobileClassName}`}
       >
         <div className="text-neutral-300 dark:text-neutral-400">

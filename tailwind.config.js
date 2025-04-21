@@ -1,4 +1,7 @@
+
+
 /** @type {import('tailwindcss').Config} */
+import defaultTheme from 'tailwindcss/defaultTheme';
 export default {
   content: [
     './pages/**/*.{ts,tsx}',
@@ -35,11 +38,11 @@ export default {
         xl: '2rem',
       },
       screens: {
-        '2xl': '86rem',
-        lg: '64rem',
-        md: '48rem',
-        sm: '40rem',
-        xl: '80rem',
+        "2xs": "200px",
+        xs: "300px",
+        "xl-custom": "1300px",
+        "2xl-custom": "1465px",
+        ...defaultTheme.screens
       },
     },
     extend: {

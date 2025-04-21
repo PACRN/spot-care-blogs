@@ -141,7 +141,7 @@ const RadiusInput: FC<RadiusInputProps> = ({
       {({ open, close }) => (
         <>
           <div
-            className={`flex-1 pl-8 z-10 lg:py-2 xs:py-1 flex items-center focus:outline-none ${open ? "nc-hero-field-focused" : ""
+            className={`flex-1 pl-8 z-10 lg:py-2 xs:py-1 flex items-center focus:outline-none ${open ? "shadow-[0_4px_16px_#11111a0d,_0_8px_32px_#11111a0d] rounded-full" : ""
               } ${mobileClassName}`}
           >
             <Popover.Button

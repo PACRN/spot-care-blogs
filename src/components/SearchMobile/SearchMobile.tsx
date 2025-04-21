@@ -125,7 +125,7 @@ const SearchMobile = () => {
             >
               <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden transition-all xs:block xl:hidden">
                 <div
-                  className="w-full h-full flex flex-col transition transform shadow-lg ring-1 dark:ring-neutral-700 bg-white dark:bg-neutral-800 
+                  className="w-full h-full flex flex-col transition transform shadow-lg ring-1 dark:ring-neutral-700 bg-white dark:bg-neutral-800
                     drawer-container"
                 >
                   {/* Search Header Section */}
@@ -143,19 +143,19 @@ const SearchMobile = () => {
                       <div className="transition-opacity animate-[myblur_0.4s_ease-in-out] w-full px-10">
                         <CareTypeInput
                           className="flex-1"
-                          mobileClassName={"nc-hero-field-focused"}
+                          mobileClassName={"shadow-[0_4px_16px_#11111a0d,_0_8px_32px_#11111a0d] rounded-full"}
                         />
                       </div>
                       <div className="transition-opacity animate-[myblur_0.4s_ease-in-out] w-full">
                         <LocationInput
                           className="flex-1 "
-                          mobileClassName={"nc-hero-field-focused"}
+                          mobileClassName={"shadow-[0_4px_16px_#11111a0d,_0_8px_32px_#11111a0d] rounded-full"}
                         />
                       </div>
                       <div className="transition-opacity animate-[myblur_0.4s_ease-in-out] w-full px-10">
                         <RadiusInput
                           className={`flex-1`}
-                          mobileClassName={"nc-hero-field-focused"}
+                          mobileClassName={"shadow-[0_4px_16px_#11111a0d,_0_8px_32px_#11111a0d] rounded-full"}
                         />
                       </div>
                     </div>
